@@ -395,10 +395,6 @@
                 if (currentScroll >= sectionHeight * 2) {
                     scrollWrapper.scrollTop = sectionHeight;
                 }
-            
-            function continueToNext() {
-                window.location.href = 'rizz.html';
-            }
                 
                 scrollWrapper.scrollBy({
                     top: 300,
@@ -406,6 +402,10 @@
                 });
                 
                 setTimeout(startAutoScroll, 3000);
+            }
+            
+            function continueToNext() {
+                window.location.href = 'rizz.html';
             }
             
             // Auto-scroll functionality for continuous smooth loop

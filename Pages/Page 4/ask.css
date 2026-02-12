@@ -181,10 +181,11 @@ h1{
 
 img{
     margin-top: 1rem;
-    max-height: 40vh;
+    height: 40vh;
     max-width: 80%;
-    height: auto;
+    width: auto;
     display: block;
+    object-fit: contain;
 }
 
 .buttons {
