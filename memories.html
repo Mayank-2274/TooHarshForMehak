@@ -237,6 +237,52 @@
           height: 48px;
         }
       }
+      
+      /* Continue button styles */
+      .continue-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #5d4037 0%, #8d6e63 100%);
+        color: #efecdb;
+        border: 2px solid #efecdb;
+        padding: 12px 32px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        border-radius: 50px;
+        cursor: pointer;
+        z-index: 1001;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(93, 64, 55, 0.4);
+        backdrop-filter: blur(10px);
+      }
+      
+      .continue-btn:hover {
+        background: linear-gradient(135deg, #8d6e63 0%, #5d4037 100%);
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 6px 20px rgba(93, 64, 55, 0.6);
+      }
+      
+      .continue-btn:active {
+        transform: translateX(-50%) scale(0.98);
+      }
+      
+      @media (max-width: 768px) {
+        .continue-btn {
+          bottom: 15px;
+          padding: 10px 24px;
+          font-size: 1rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .continue-btn {
+          bottom: 10px;
+          padding: 8px 20px;
+          font-size: 0.9rem;
+        }
+      }
         </style>
     </head>
     <body>
@@ -308,6 +354,8 @@
             <header></header>
         </div>
         
+        <button class="continue-btn" onclick="continueToNext()">Continue →</button>
+        
         <script>
             const scrollWrapper = document.querySelector('.horizontal-scroll-wrapper');
             
@@ -347,6 +395,10 @@
                 if (currentScroll >= sectionHeight * 2) {
                     scrollWrapper.scrollTop = sectionHeight;
                 }
+            
+            function continueToNext() {
+                window.location.href = 'rizz.html';
+            }
                 
                 scrollWrapper.scrollBy({
                     top: 300,
