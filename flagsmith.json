@@ -1,0 +1,9 @@
+{
+  "api": "https://edge.api.flagsmith.com/api/v1/",
+  "flags": {
+    "Enable GPT-5 mini for all clients": true
+  },
+  "ts": null,
+  "traits": null,
+  "evaluationEvent": null
+}

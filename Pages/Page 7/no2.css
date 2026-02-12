@@ -1,0 +1,84 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: dubai;
+}
+section{
+	position: relative;
+	min-height: 100vh;
+	background: #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 1rem;
+}
+section h2{
+	color: #fff;
+	font-size: clamp(1.5rem, 6vw, 5em);
+	cursor: default;
+	text-align: center;
+	padding: 0 1rem;
+	z-index: 1;
+}
+
+section h2 span{
+    color: rgb(240, 99, 99);
+}
+
+section .btn{
+    margin-top: 2rem;
+    font-size: clamp(16px, 4vw, 30px);
+    z-index: 1;
+    padding: 0.5rem 1.5rem;
+    animation: blinkingLight 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes blinkingLight {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 40px rgba(255, 255, 255, 0.2),
+                    0 0 60px rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.8),
+                    0 0 80px rgba(255, 255, 255, 0.6),
+                    0 0 120px rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 1);
+    }
+}
+
+.light{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	background: radial-gradient(circle at var(--x) var(--y) , transparent 10%, rgba(0,0,0,0.95) 20%);
+}
+
+.watermark {
+    opacity: 0.5;
+    color: rgb(243, 214, 214);
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.watermark a{
+    text-decoration: none;
+    color: rgb(243, 214, 214);
+}
+
+@media (max-width: 768px) {
+    .light {
+        background: radial-gradient(circle at var(--x) var(--y), transparent 15%, rgba(0,0,0,0.95) 25%);
+    }
+}

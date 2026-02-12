@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><3Letter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        font-family: 'Poor Story', system-ui;
+        font-weight: 700;
+        color: #ff6;
+        background-color: #000;
+        overflow: hidden;
+      }
+
+      p#start {
+        position: relative;
+        width: 16em;
+        font-size: 100%;
+        font-weight: 400;
+        margin: 20% auto;
+        color: #4ee;
+        opacity: 0;
+        z-index: 1;
+        -webkit-animation: intro 2s ease-out;
+        -moz-animation: intro 2s ease-out;
+        -ms-animation: intro 2s ease-out;
+        -o-animation: intro 2s ease-out;
+        animation: intro 2s ease-out;
+      }
+
+      @-webkit-keyframes intro {
+        0% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @-moz-keyframes intro {
+        0% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @-ms-keyframes intro {
+        0% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @-o-keyframes intro {
+        0% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes intro {
+        0% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      h1 {
+        position: absolute;
+        width: 2.6em;
+        left: 50%;
+        top: 25%;
+        font-size: 10em;
+        text-align: center;
+        margin-left: -1.3em;
+        line-height: 0.8em;
+        letter-spacing: -0.05em;
+        color: #000;
+        text-shadow: -2px -2px 0 #ff6, 2px -2px 0 #ff6, -2px 2px 0 #ff6,
+          2px 2px 0 #ff6;
+        opacity: 0;
+        z-index: 1;
+        -webkit-animation: logo 5s ease-out 2.5s;
+        -moz-animation: logo 5s ease-out 2.5s;
+        -ms-animation: logo 5s ease-out 2.5s;
+        -o-animation: logo 5s ease-out 2.5s;
+        animation: logo 5s ease-out 2.5s;
+      }
+
+      h1 sub {
+        display: block;
+        font-size: 0.3em;
+        letter-spacing: 0;
+        line-height: 0.8em;
+      }
+
+      @-webkit-keyframes logo {
+        0% {
+          -webkit-transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: scale(0.1);
+          opacity: 0;
+        }
+      }
+
+      @-moz-keyframes logo {
+        0% {
+          -moz-transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          -moz-transform: scale(0.1);
+          opacity: 0;
+        }
+      }
+
+      @-ms-keyframes logo {
+        0% {
+          -ms-transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          -ms-transform: scale(0.1);
+          opacity: 0;
+        }
+      }
+
+      @-o-keyframes logo {
+        0% {
+          -o-transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          -o-transform: scale(0.1);
+          opacity: 0;
+        }
+      }
+
+      @keyframes logo {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0.1);
+          opacity: 0;
+        }
+      }
+
+      /* the interesting 3D scrolling stuff */
+      #titles {
+        position: absolute;
+        width: 18em;
+        height: 50em;
+        bottom: 0;
+        left: 50%;
+        margin-left: -9em;
+        font-size: 150%;
+        text-align: justify;
+        overflow: hidden;
+        -webkit-transform-origin: 50% 100%;
+        -moz-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+        -o-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transform: perspective(300px) rotateX(8deg);
+        -moz-transform: perspective(300px) rotateX(8deg);
+        -ms-transform: perspective(300px) rotateX(8deg);
+        -o-transform: perspective(300px) rotateX(8deg);
+        transform: perspective(300px) rotateX(8deg);
+      }
+
+      #titles:after {
+        position: absolute;
+        content: " ";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 60%;
+        background-image: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          transparent 100%
+        );
+        background-image: -moz-linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          transparent 100%
+        );
+        background-image: -ms-linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          transparent 100%
+        );
+        background-image: -o-linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          transparent 100%
+        );
+        background-image: linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          transparent 100%
+        );
+        pointer-events: none;
+      }
+
+      #titles p {
+        text-align: justify;
+        margin: 0.8em 0;
+      }
+
+      #titles p.center {
+        text-align: center;
+      }
+
+      #titles a {
+        color: #ff6;
+        text-decoration: underline;
+        background-color: purple;
+        color :white;
+
+      }
+
+      #titlecontent {
+        position: absolute;
+        top: 100%;
+        -webkit-animation: scroll 150s linear 4s infinite;
+        -moz-animation: scroll 150s linear 4s infinite;
+        -ms-animation: scroll 150s linear 4s infinite;
+        -o-animation: scroll 150s linear 4s infinite;
+        animation: scroll 150s linear 4s infinite;
+      }
+
+      /* animation */
+      @-webkit-keyframes scroll {
+        0% {
+          top: 100%;
+        }
+        100% {
+          top: -170%;
+        }
+      }
+
+      @-moz-keyframes scroll {
+        0% {
+          top: 100%;
+        }
+        100% {
+          top: -170%;
+        }
+      }
+
+      @-ms-keyframes scroll {
+        0% {
+          top: 100%;
+        }
+        100% {
+          top: -170%;
+        }
+      }
+
+      @-o-keyframes scroll {
+        0% {
+          top: 100%;
+        }
+        100% {
+          top: -170%;
+        }
+      }
+
+      @keyframes scroll {
+        0% {
+          top: 100%;
+        }
+        100% {
+          top: -170%;
+        }
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 3em;
+          width: 3em;
+          margin-left: -1.5em;
+        }
+        #titles {
+          font-size: 100%;
+          width: 14em;
+          margin-left: -7em;
+        }
+        p#start {
+          font-size: 90%;
+          width: 14em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2em;
+          width: 4em;
+          margin-left: -2em;
+          top: 30%;
+        }
+        #titles {
+          font-size: 80%;
+          width: 12em;
+          margin-left: -6em;
+        }
+        p#start {
+          font-size: 80%;
+          width: 12em;
+          margin: 30% auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="text-xl md:text-3xl">
+    <p id="start">A short time ago we met and now this&hellip;</p>
+
+    <h1>23rd March, 2024</h1>
+
+    <div id="titles">
+      <div id="titlecontent">
+        <p class="center">
+          My Dear,<br />
+          Mehak <br />
+          23rd March, 2024
+        </p>
+
+        <p>
+          Ki Lga Ab Mujhe Gale Se Ik Bar Tu Bhi<br />
+          Ki Mehsus Ho Chahat Mujhe Tujhse Bhi
+        </p>
+
+        <p>
+          Kab Tak Main Tujhe Ek Tarfa Pyaar Duga<br />
+          Ek Baar Thodi Si Tu Mohabhhat De Mujhe Bhi
+        </p>
+
+        <p>
+          Or Uss Arse Main Mujhe Theherna Hain<br />
+          Ab Bas Tera Ban Mujhe Rehna Hain
+        </p>
+
+        <p>
+          Bhla Ab Maut Se Kauf Nahi Mujje Bhi<br />
+          Tere Aqso Ko Phoch Duga<br />
+          Khudh Ko Tre Ishq Main Rondh Duga
+        </p>
+
+        <p>
+          Or Wafa Mujhme Baki Hain<br />
+          Thodi Si Udhar Tujhe Bhi Zarur Duga
+        </p>
+
+        <p>
+          Ye Hasne Ki Baat Nahi Wo Aani Raat Nahi<br />
+          Jis Din Tu Thamegi Hath Mera Wo Kategi<br />
+          Meri Ab Raat Nahi
+        </p>
+
+        <p>
+          Tujhe Khush Dekhne Ki Chahat Hain<br />
+          Tu Rab Se Mangi Ik Ibadat Hain
+        </p>
+
+        <p class="center">❤️</p>
+
+        <p>
+          Ha Mujhe Tujhse Pyaar Hain Iss Mohabhhat Main Uljha Tera Ye Yaar Hain
+        </p>
+
+        <p>
+          Or Tu Jug Main Batati Hain Ki<br />
+          Tu Meri Akhiri Ibadat Or Mera Pyaar Hain
+        </p>
+
+        <p>
+          Ab Kawf Mera - Tera Saaya Hain<br />
+          Tujhe Kho Kar Fir Paya Hain
+        </p>
+
+        <p>
+          Ek Arse Se Mujhe Teri Talaash Hain<br />
+          Dekh Na Ye Bnda Ban Kar Betha Zinda Lash Hain
+        </p>
+
+        <p>
+          Ab Na Azma Mere Sabr Ko<br />
+          Kya Tujhe Koi Khabhar Hain
+        </p>
+
+        <p>
+          Dekh Na Mujhe Tu Meri Jesi Najro Se<br />
+          Ye Dil To Mera Khub Awara Hain
+        </p>
+
+        <p>
+          Na Chahie Koi Heere Ya Moti<br />
+          Meri Chahat Hain Bhot Choti
+        </p>
+
+        <p>
+          Teri Ruh Pe Apna Naam Gadwana Hain<br />
+          Tere Labo Pe Khud Ke Labo Ko Pana Hain<br />
+          Tere Jism Pe Shakar Ki Tarah Ghul Jana H
+        </p>
+
+        <p class="center">💕</p>
+
+        <p>
+          Ha Mujhe Tujhse Mohabhhat Hain<br />
+          Mujhe Iss Baar Sirf Tera Hona Hain<br />
+          Or Fir Kabhi Nahi Khona Hain
+        </p>
+
+        <p>
+          Main Uthauga Tujhe Taaj Ki Tara<br />
+          Mera Sar Hi Ab Tera Thikana Hain
+        </p>
+
+        <p>
+          Tujhe Likh Devi Tere Paer Pedu<br />
+          Maan Ke Devi Tre Jaap Keru<br />
+          Kabhi Keru Na Tera Apmaan
+        </p>
+
+        <p>
+          Ha Yehi Hain Chahat Meri<br />
+          Ab Tere Upar Puri Jawani Waqar Du
+        </p>
+
+        <p>
+          Aa Mere Paas Tujhe Mili Nahi Na<br />
+          Is Zamane Main Kisi Se Bhi Mohabhhat
+        </p>
+
+        <p>
+          Pehle Teri Nazar Utaru Fir Tujhe<br />
+          Apne Prem Ka Bhog Laga Du
+        </p>
+
+        <p>
+          Ab Tamannah Hain Bas Tere Hone Ki<br />
+          Tere Dukh Main Nikle Ansuo Ko<br />
+          Apne Hatho Se Pochne Ki
+        </p>
+
+        <p>
+          Ab Bacha Nahi Iss Zamane Main<br />
+          Mere Liye Kuch Bhi, Aa Tujhe Pyaar Keru
+        </p>
+
+        <p>
+          Tere Dukho Ko Apna Bana<br />
+          Tere Dukh Dard Cheen Lu Or Fir<br />
+          Ik Baar Tujhe Main Pyaar Keru
+        </p>
+
+        <p>
+          Tere Dukh Dard Cheen Tujhe Swar Du<br />
+          Aa Tu Ik Baar Fir Tujhe Main Pyaar Keru
+        </p>
+
+        <p class="center">💖</p>
+
+        <p>
+          With all my love,
+        </p>
+
+        <p class="center">Forever Yours&hellip;</p>
+
+        <p>Harsh</p>
+        <p class="center">
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

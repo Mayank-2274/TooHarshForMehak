@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>card memories</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+      body {
+        font-family: Hepta Slab, sans-serif;
+        font-weight: 500;
+        background: #efecdb;
+        color: #5d4037;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      /* hide scrollbar */
+      ::-webkit-scrollbar {
+        width: 1px;
+        height: 1px;
+      }
+
+      ::-webkit-scrollbar-button {
+        width: 1px;
+        height: 1px;
+      }
+      .external {
+        overflow: hidden;
+        height: 95vh;
+        margin-top: -2vh;
+      }
+
+      .horizontal-scroll-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vh;
+        transform: rotate(-90deg) translate3d(0, -95vh, 0);
+        transform-origin: right top;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0;
+        height: 100vw;
+        perspective: 1px;
+        transform-style: preserve-3d;
+        padding-bottom: 8rem;
+      }
+      .img-wrapper {
+        transform: rotate(90deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40vh;
+        transform-origin: 50% 50%;
+        transform: rotate(90deg) translateZ(0.1px) scale(0.9) translateX(0px)
+          translateY(-8vh);
+        transition: 1s;
+      }
+
+      .img-wrapper:hover {
+        min-height: 65vh;
+      }
+
+      .slower {
+        transform: rotate(90deg) translateZ(-0.2px) scale(1.1) translateX(0%)
+          translateY(-15vh);
+      }
+      .slower1 {
+        transform: rotate(90deg) translateZ(-0.25px) scale(1.05) translateX(0%)
+          translateY(3vh);
+      }
+      .slower2 {
+        transform: rotate(90deg) translateZ(-0.3px) scale(1.3) translateX(0%)
+          translateY(-3vh);
+      }
+      .slower-down {
+        transform: rotate(90deg) translateZ(-0.2px) scale(1.1) translateX(0%)
+          translateY(11vh);
+      }
+      .faster {
+        transform: rotate(90deg) translateZ(0.15px) scale(0.8) translateX(0%)
+          translateY(9vh);
+      }
+      .faster1 {
+        transform: rotate(90deg) translateZ(0.05px) scale(0.8) translateX(0%)
+          translateY(5vh);
+      }
+      .fastest {
+        transform: rotate(90deg) translateZ(0.22px) scale(0.7) translateX(-10vh)
+          translateY(-20vh);
+      }
+      .vertical {
+        transform: rotate(90deg) translateZ(-0.15px) scale(1.15) translateX(0%)
+          translateY(-5%);
+      }
+      .last {
+        transform: rotate(90deg) translateZ(-0.2px) scale(1.1) translateX(25vh)
+          translateY(-13vh);
+      }
+      .scroll-info,
+      header {
+        position: absolute;
+        left: 1rem;
+      }
+
+      header {
+        bottom: 1rem;
+      }
+      .scroll-info {
+        top: 1rem;
+      }
+      a {
+        color: inherit;
+        font-weight: 500;
+      }
+      h1 {
+        font-weight: 300;
+        font-size: 1rem;
+      }
+
+      .img-wrapper a {
+        overflow: hidden;
+        display: block;
+        padding: 1vh;
+        background: #efecdb;
+        box-shadow: 0 10px 50px #5f2f1182;
+      }
+      img {
+        max-width: 45vh;
+        max-height: 50vh;
+        transition: 0.5s;
+        vertical-align: top;
+        filter: saturate(40%) sepia(30%) hue-rotate(5deg);
+      }
+      a:hover img {
+        filter: none;
+      }
+      p {
+        margin: 0;
+      }
+      .scroll-info {
+        display: flex;
+        align-items: center;
+      }
+      .icon svg {
+        width: 50px;
+        fill: currentcolor;
+      }
+      
+      .scroll-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(93, 64, 55, 0.8);
+        color: #efecdb;
+        border: none;
+        font-size: 3rem;
+        font-weight: bold;
+        width: 60px;
+        height: 80px;
+        cursor: pointer;
+        z-index: 1000;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+      
+      .scroll-arrow:hover {
+        background: rgba(93, 64, 55, 1);
+        transform: translateY(-50%) scale(1.1);
+      }
+      
+      .left-arrow {
+        left: 20px;
+      }
+      
+      .right-arrow {
+        right: 20px;
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .external {
+          height: 85vh;
+        }
+        .horizontal-scroll-wrapper {
+          width: 85vh;
+          transform: rotate(-90deg) translate3d(0, -85vh, 0);
+          height: 100vw;
+        }
+        img {
+          max-width: 30vh;
+          max-height: 35vh;
+        }
+        .img-wrapper {
+          min-height: 30vh;
+        }
+        .img-wrapper:hover {
+          min-height: 45vh;
+        }
+        .scroll-arrow {
+          font-size: 2rem;
+          width: 40px;
+          height: 60px;
+        }
+        .left-arrow {
+          left: 5px;
+        }
+        .right-arrow {
+          right: 5px;
+        }
+        .slower, .slower-down, .slower1, .slower2, .faster, .faster1, .fastest, .vertical, .last {
+          transform: rotate(90deg) translateZ(0) scale(0.85) translateX(0) translateY(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .external {
+          height: 80vh;
+        }
+        .horizontal-scroll-wrapper {
+          width: 80vh;
+          transform: rotate(-90deg) translate3d(0, -80vh, 0);
+        }
+        img {
+          max-width: 25vh;
+          max-height: 30vh;
+        }
+        .img-wrapper {
+          min-height: 25vh;
+        }
+        .scroll-arrow {
+          font-size: 1.5rem;
+          width: 32px;
+          height: 48px;
+        }
+      }
+        </style>
+    </head>
+    <body>
+        <a href="rizz.html" class="flex items-center justify-center scale-75 py-1">
+            <p class="text-xl md:text-3xl leading-tight text-center px-2">Lets Start With My Gallery, press to continue....</p>
+            <img src="Pages/Assets/smart1.gif" class="filter-none w-16 h-16 md:w-24 md:h-24">
+        </a>
+        <div class="external">
+            <button class="scroll-arrow left-arrow" onclick="scrollLeft()">‹</button>
+            <button class="scroll-arrow right-arrow" onclick="scrollRight()">›</button>
+            <div class="horizontal-scroll-wrapper">
+                <div class="img-wrapper slower">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-1.jpeg" alt="Memory 1">
+                    </a>
+                </div>
+                <div class="img-wrapper faster">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-2.jpeg" alt="Memory 2">
+                    </a>
+                </div>
+                <div class="img-wrapper slower vertical">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-3.jpeg" alt="Memory 3">
+                    </a>
+                </div>
+                <div class="img-wrapper slower slower-down">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-4.jpeg" alt="Memory 4">
+                    </a>
+                </div>
+                <div class="img-wrapper">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-5.jpeg" alt="Memory 5">
+                    </a>
+                </div>
+                <div class="img-wrapper slower">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-6.jpeg" alt="Memory 6">
+                    </a>
+                </div>
+                <div class="img-wrapper faster1">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-7.jpeg" alt="Memory 7">
+                    </a>
+                </div>
+                <div class="img-wrapper slower slower2">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-8.jpeg" alt="Memory 8">
+                    </a>
+                </div>
+                <div class="img-wrapper">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-9.jpeg" alt="Memory 9">
+                    </a>
+                </div>
+                <div class="img-wrapper slower">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-10.jpeg" alt="Memory 10">
+                    </a>
+                </div>
+                <div class="img-wrapper slower last">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="Pages/Gallery/photo-11.jpeg" alt="Memory 11">
+                    </a>
+                </div>
+            </div>
+            <!-- <p class="scroll-info"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" ><path d="M50,67.1c-0.6,0-1.2-0.2-1.8-0.7c-3.8-3.8-7.7-7.7-11.5-11.5c-2.3-2.3,1.2-5.8,3.5-3.5c2.5,2.5,4.9,4.9,7.4,7.4      c0-13.7,0-27.4,0-41.2c0-0.6,0.2-1.2,0.5-1.5c0,0,0,0,0,0c0.4-0.6,1.1-1,2-0.9c13.7,0.3,26.4,7.2,33.5,19.1      C96.5,55.9,84.7,85,60.2,91.6C35.5,98.2,11.6,79.1,11.1,54c-0.1-3.2,4.9-3.2,5,0c0.3,13.8,8.4,26.4,21.3,31.5      c12.5,5,27.1,1.9,36.6-7.5c9.5-9.5,12.5-24.1,7.5-36.6c-4.8-12.1-16.3-20.1-29-21.2c0,12.8,0,25.5,0,38.3      c2.5-2.5,4.9-4.9,7.4-7.4c2.3-2.3,5.8,1.3,3.5,3.5c-3.9,3.9-7.8,7.8-11.8,11.8C51.2,66.9,50.6,67.1,50,67.1z"/></svg></span> Try scrolling down</p> -->
+            <header></header>
+        </div>
+        
+        <script>
+            const scrollWrapper = document.querySelector('.horizontal-scroll-wrapper');
+            
+            // Duplicate the gallery content for infinite scroll
+            function createInfiniteScroll() {
+                const originalContent = scrollWrapper.innerHTML;
+                scrollWrapper.innerHTML = originalContent + originalContent + originalContent;
+            }
+            
+            // Initialize infinite scroll
+            createInfiniteScroll();
+            
+            function scrollLeft() {
+                stopAutoScroll();
+                const currentScroll = scrollWrapper.scrollTop;
+                const maxScroll = scrollWrapper.scrollHeight;
+                const sectionHeight = maxScroll / 3;
+                
+                if (currentScroll <= 0) {
+                    scrollWrapper.scrollTop = sectionHeight * 2;
+                }
+                
+                scrollWrapper.scrollBy({
+                    top: -300,
+                    behavior: 'smooth'
+                });
+                
+                setTimeout(startAutoScroll, 3000);
+            }
+            
+            function scrollRight() {
+                stopAutoScroll();
+                const currentScroll = scrollWrapper.scrollTop;
+                const maxScroll = scrollWrapper.scrollHeight;
+                const sectionHeight = maxScroll / 3;
+                
+                if (currentScroll >= sectionHeight * 2) {
+                    scrollWrapper.scrollTop = sectionHeight;
+                }
+                
+                scrollWrapper.scrollBy({
+                    top: 300,
+                    behavior: 'smooth'
+                });
+                
+                setTimeout(startAutoScroll, 3000);
+            }
+            
+            // Auto-scroll functionality for continuous smooth loop
+            let autoScrolling = false;
+            let animationFrameId = null;
+            const scrollSpeed = 0.5; // pixels per frame (adjust for speed)
+            
+            function continuousAutoScroll() {
+                if (!autoScrolling) return;
+                
+                const currentScroll = scrollWrapper.scrollTop;
+                const maxScroll = scrollWrapper.scrollHeight;
+                const sectionHeight = maxScroll / 3;
+                
+                // Smooth continuous scroll
+                scrollWrapper.scrollTop += scrollSpeed;
+                
+                // Handle seamless loop
+                if (currentScroll >= sectionHeight * 2.5) {
+                    scrollWrapper.scrollTop = sectionHeight * 0.5;
+                } else if (currentScroll <= sectionHeight * 0.3) {
+                    scrollWrapper.scrollTop = sectionHeight * 1.5;
+                }
+                
+                animationFrameId = requestAnimationFrame(continuousAutoScroll);
+            }
+            
+            function startAutoScroll() {
+                if (autoScrolling) return;
+                autoScrolling = true;
+                continuousAutoScroll();
+            }
+            
+            function stopAutoScroll() {
+                autoScrolling = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+            }
+            
+            // Start auto-scroll on page load
+            window.addEventListener('load', () => {
+                // Initialize scroll position to middle section
+                const maxScroll = scrollWrapper.scrollHeight;
+                const sectionHeight = maxScroll / 3;
+                scrollWrapper.scrollTop = sectionHeight;
+                
+                setTimeout(startAutoScroll, 1000); // Start after 1 second
+            });
+            
+            // Pause auto-scroll on user interaction
+            scrollWrapper.addEventListener('mouseenter', stopAutoScroll);
+            scrollWrapper.addEventListener('mouseleave', () => {
+                setTimeout(startAutoScroll, 500);
+            });
+            
+            // Pause on mouse wheel scroll
+            scrollWrapper.addEventListener('wheel', () => {
+                stopAutoScroll();
+                setTimeout(startAutoScroll, 2000);
+            }, {passive: true});
+            
+            // Touch support for mobile swiping
+            let touchStartY = 0;
+            let userScrolling = false;
+            
+            scrollWrapper.addEventListener('touchstart', (e) => {
+                touchStartY = e.touches[0].clientY;
+                stopAutoScroll();
+                userScrolling = true;
+            }, {passive: true});
+            
+            scrollWrapper.addEventListener('touchmove', (e) => {
+                // Let the rotated scroll wrapper handle touch naturally
+            }, {passive: true});
+            
+            scrollWrapper.addEventListener('touchend', () => {
+                userScrolling = false;
+                setTimeout(startAutoScroll, 2000);
+            });
+            
+            // Handle manual scrolling to maintain loop
+            scrollWrapper.addEventListener('scroll', () => {
+                if (userScrolling || !autoScrolling) return;
+                
+                const currentScroll = scrollWrapper.scrollTop;
+                const maxScroll = scrollWrapper.scrollHeight;
+                const sectionHeight = maxScroll / 3;
+                
+                // Seamless loop correction during auto-scroll
+                if (currentScroll >= sectionHeight * 2.7) {
+                    scrollWrapper.scrollTop = sectionHeight * 0.4;
+                } else if (currentScroll <= sectionHeight * 0.2) {
+                    scrollWrapper.scrollTop = sectionHeight * 1.6;
+                }
+            });
+        </script>
+    </body>
+</html>

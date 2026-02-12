@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body{
+    min-height: 100vh;
+    background: #0c192c;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('../Gallery/photo-5.jpeg'),
+        url('../Gallery/photo-12.jpeg');
+    background-size: 400px, 350px;
+    background-position: 
+        top -50px right -100px,
+        bottom -80px left -120px;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background-image: url('../Gallery/photo-18.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.04;
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(3px);
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+h2{
+    color: antiquewhite;
+    font-size: clamp(1.2rem, 4vw, 1.75rem);
+    text-align: center;
+    padding: 0 1rem;
+}
+
+h3{
+    padding-bottom: 2rem;
+    color: #203757;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+}
+
+.btn{
+    z-index: 1000;
+}
+
+.hearts{
+    font-size: clamp(40px, 10vw, 100px);
+    font-weight: bold;
+    position: fixed;
+    top: -1vh;
+    left: 0;
+    transform: translateY(0%);
+    animation: fall 1s ease-in infinite;
+}
+
+
+@keyframes fall{
+    to{
+        transform: translateY(250vh);
+    }
+}
+
+.chori-chori {
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1{  
+    margin-top: 2rem;
+    padding: 0 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+    font-size: clamp(1rem, 3.5vw, 2rem);
+}
+
+#center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 0;
+    padding: 0 1rem;
+}
+
+.beauti, .gorg, .wow{
+    color: transparent;
+    -webkit-text-stroke: 2px darkmagenta;
+    position: relative;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+#beauti{
+    padding: 1.5rem 0;
+}
+
+#gorg{
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+#wow{
+    text-align: right;
+    padding: 1.5rem 0;
+}
+
+.beauti::before{
+    content: "BEAUTIFUL!!!!!!";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    color: darkmagenta;
+    border-right: 4px solid darkmagenta;
+    animation: slidein infinite 1.5s;
+}
+.gorg::before{
+    content: "GORGEOUS!!!!!!";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    color: darkmagenta;
+    border-right: 4px solid darkmagenta;
+    animation: slidein infinite 1.5s;
+    animation-direction: reverse;
+}
+.wow::before{
+    content: "WOWWWW!!!!!!";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    color: darkmagenta;
+    border-right: 4px solid darkmagenta;
+    animation: slidein infinite 1.5s;
+}
+
+@keyframes slidein {
+    to {
+        width: 100%;
+        filter: drop-shadow(0 0 25px darkmagenta);
+    }
+}
+
+.beauti:hover::before, .gorg:hover::before, .wow:hover::before{
+    width: 100%;
+    filter: drop-shadow(0 0 25px darkmagenta);
+}
+
+.watermark {
+    opacity: 0.5;
+    color: rgb(238, 203, 203);
+    position: fixed;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(238, 203, 203);
+}
+
+@media (max-width: 480px) {
+    .beauti, .gorg, .wow {
+        -webkit-text-stroke: 1.5px darkmagenta;
+    }
+    .beauti::before, .gorg::before, .wow::before {
+        border-right: 3px solid darkmagenta;
+    }
+}
